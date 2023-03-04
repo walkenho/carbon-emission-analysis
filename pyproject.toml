@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "emissionsanalysis"
+version = "0.1.0"
+description = ""
+authors = ["Jessica Walkenhorst <walkenho@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^1.5.3"
+jupyter = "^1.0.0"
+black = "^23.1.0"
+jupyterlab = "^3.6.1"
+openpyxl = "^3.1.1"
+plotly = "^5.13.1"
+ipywidgets = "^8.0.4"
+pandas-flavor = "^0.5.0"
+matplotlib = "^3.7.0"
+scikit-learn = "^1.2.1"
+jupyterlab-code-formatter = "^1.5.3"
+isort = "^5.12.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.0.0"
+nb-black = {git = "https://github.com/dnanhkhoa/nb_black.git", rev = "be0c810503867abc4a5e9d05ba75a16fce57dfee"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
