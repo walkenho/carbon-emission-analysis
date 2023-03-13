@@ -1,4 +1,5 @@
 # Carbon Emission Analyis
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/walkenho/carbon-emission-analysis/main?labpath=EmissionDataAnalysis.ipynb)
 
 ## Introduction
 
@@ -21,10 +22,13 @@ Questions that I would like to explore in the future are:
 ### Using Poetry
 #### Installation
 
-Run `make install` to install the necessary software packages. Note that this uses poetry, so you will need to have poetry installed. Alternat
+Run `make install` to install the necessary software packages. 
 
 #### Execution
-Run `make presenation` to show the Jupypter Lab notebook.
+
+Run `make presentation` to show the Jupypter Lab notebook.
 
 ### Without Poetry
-Just put the notebook wherever you prefer and install the necessary libraries.
+
+* Option 1: Run on [Binder](https://mybinder.org/v2/gh/walkenho/carbon-emission-analysis/main?labpath=EmissionDataAnalysis.ipynb).
+* Option 2: Install the necessary libraries and run wherever you like :)
