@@ -1,5 +1,7 @@
 from enum import Enum
+
 import pandas as pd
+
 
 class Ship(str, Enum):
     imo = "ship_imo_number"
@@ -16,16 +18,14 @@ class Ship(str, Enum):
 
 class AnnualReport(str, Enum):
     co2_per_dwt_distance = "annual_monitoring_results_annual_average_fuel_consumption_per_transport_work_(dwt)_[g_/_dwt_carried_·_n_miles]"
-    co2_per_distance = (
-        "annual_monitoring_results_annual_average_co₂_emissions_per_distance_[g_co₂_/_n_mile]"
-    )
-    fuel_per_distance = (
-        "annual_monitoring_results_annual_average_fuel_consumption_per_distance_[kg_/_n_mile]"
-    )
+    co2_per_distance = "annual_monitoring_results_annual_average_co₂_emissions_per_distance_[g_co₂_/_n_mile]"
+    fuel_per_distance = "annual_monitoring_results_annual_average_fuel_consumption_per_distance_[kg_/_n_mile]"
     fuel_total = "annual_monitoring_results_total_fuel_consumption_[m_tonnes]"
     dwt_carried = "annual_monitoring_results_annual_average_dwt_carried"
     distance_total = "annual_monitoring_results_total_distance[n_mile]"
-    distance_total_imputed_mean = "annual_monitoring_results_total_distance[n_mile]_imputed_mean"
+    distance_total_imputed_mean = (
+        "annual_monitoring_results_total_distance[n_mile]_imputed_mean"
+    )
     distance_total_imputed_median = (
         "annual_monitoring_results_total_distance[n_mile]_imputed_median"
     )
@@ -46,16 +46,22 @@ class EmissionsData:
 
     def _assert_entries_are_unique(self) -> None:
         # TODO: convert to logging
-        print("\nChecking if all IMO entries are unique")
-        assert (
-            len(self.data.groupby([Ship.imo, Ship.year], as_index=False).size().query("size > 1"))
-            == 0
-        )
+        print("\nChecking that all IMO only appear once for every year")
+        try:
+            assert sum(self.data.groupby([Ship.imo, Ship.year]).size() > 1) == 0
+        except AssertionError:
+            raise AssertionError(
+                f"Each {Ship.imo} should only occur once per {Ship.year}"
+            )
         print("- OK")
 
     def _assert_technical_efficiency_is_not_negative(self) -> None:
         # TODO: convert to logging
         print("\nChecking if all efficiency values are non-negativ.")
-        assert len(self.data[self.data[Ship.efficiency_value].fillna(0) < 0]) == 0
+        try:
+            assert sum(self.data[Ship.efficiency_value] < 0) == 0
+        except AssertionError:
+            raise AssertionError(
+                f"One or more of the entries in {Ship.efficiency_value} are < 0"
+            )
         print("- OK")
-

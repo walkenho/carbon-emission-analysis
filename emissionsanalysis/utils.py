@@ -1,6 +1,7 @@
 import pandas as pd
 from pandas_flavor import register_dataframe_method
 
+
 @register_dataframe_method
 def display_fully(df):
     pd.set_option("display.max_rows", None)
