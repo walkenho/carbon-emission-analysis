@@ -1,4 +1,4 @@
-# Carbon Emission Analyis
+# Carbon Emission Analysis
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/walkenho/carbon-emission-analysis/main?labpath=EmissionDataAnalysis.ipynb)
 
 ## Introduction
