@@ -1,4 +1,5 @@
 import pandas as pd
+from IPython.display import display
 from pandas_flavor import register_dataframe_method
 
 
