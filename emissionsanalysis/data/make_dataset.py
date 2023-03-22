@@ -23,6 +23,11 @@ class DataLoader:
             AnnualReport.co2_per_dwt_distance
         ].replace("Division by zero!", np.nan)
 
+        df[AnnualReport.co2_per_mass_distance] = df[
+            AnnualReport.co2_per_mass_distance
+        ].replace("Division by zero!", np.nan)
+
+
         df[AnnualReport.fuel_per_distance] = df[AnnualReport.fuel_per_distance].replace(
             "Division by zero!", np.nan
         )
@@ -45,6 +50,10 @@ class DataLoader:
         # add dwt carried for Q3
         df["annual_monitoring_results_annual_average_dwt_carried"] = (
             df[AnnualReport.co2_per_distance] / df[AnnualReport.co2_per_dwt_distance]
+        )
+
+        df["annual_monitoring_results_annual_average_mass_carried"] = (
+            df[AnnualReport.co2_per_distance] / df[AnnualReport.co2_per_mass_distance]
         )
 
         # add distances for Q4
