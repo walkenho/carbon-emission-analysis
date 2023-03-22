@@ -18,10 +18,12 @@ class Ship(str, Enum):
 
 class AnnualReport(str, Enum):
     co2_per_dwt_distance = "annual_monitoring_results_annual_average_fuel_consumption_per_transport_work_(dwt)_[g_/_dwt_carried_·_n_miles]"
+    co2_per_mass_distance = "annual_monitoring_results_annual_average_fuel_consumption_per_transport_work_(mass)_[g_/_m_tonnes_·_n_miles]"
     co2_per_distance = "annual_monitoring_results_annual_average_co₂_emissions_per_distance_[g_co₂_/_n_mile]"
     fuel_per_distance = "annual_monitoring_results_annual_average_fuel_consumption_per_distance_[kg_/_n_mile]"
     fuel_total = "annual_monitoring_results_total_fuel_consumption_[m_tonnes]"
     dwt_carried = "annual_monitoring_results_annual_average_dwt_carried"
+    mass_carried = "annual_monitoring_results_annual_average_mass_carried"
     distance_total = "annual_monitoring_results_total_distance[n_mile]"
     distance_total_imputed_mean = (
         "annual_monitoring_results_total_distance[n_mile]_imputed_mean"
