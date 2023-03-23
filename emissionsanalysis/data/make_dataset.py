@@ -27,7 +27,6 @@ class DataLoader:
             AnnualReport.co2_per_mass_distance
         ].replace("Division by zero!", np.nan)
 
-
         df[AnnualReport.fuel_per_distance] = df[AnnualReport.fuel_per_distance].replace(
             "Division by zero!", np.nan
         )
@@ -39,6 +38,11 @@ class DataLoader:
             ]
             * 1000
         )
+
+        # brute force "Division by zero!Division by zero!..." replacement
+        df[AnnualReport.co2_per_distance] = pd.to_numeric(df[
+            AnnualReport.co2_per_distance
+        ], errors='coerce')
 
         df = df.drop(
             columns=[
